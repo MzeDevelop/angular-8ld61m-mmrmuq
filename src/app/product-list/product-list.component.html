@@ -1,0 +1,20 @@
+<h2>Produkte</h2>
+
+<div *ngFor="let product of products"> <!-- Foreach schleife -->
+<h3>
+  <a [title]="product.name + ' Details'" [routerLink]="['/products', product.id]"> <!-- [] = Propertybinding | Hyperlink mit a -->
+    {{ product.name }}
+  </a>
+</h3>
+  <p *ngIf="product.description">
+    Beschreibung: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    Teilen
+  </button>
+
+  <app-product-alerts [product]="product"
+  (notify)="onNotify()">
+  </app-product-alerts>
+</div>
